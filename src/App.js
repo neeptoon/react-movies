@@ -9,9 +9,7 @@ function App() {
   return (
       <React.Fragment>
           <Header/>
-          <Main>
-            <Movies/>
-          </Main>
+          <Main/>
           <Footer/>
       </React.Fragment>
   );
