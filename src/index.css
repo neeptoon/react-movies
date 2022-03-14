@@ -34,14 +34,9 @@ main {
 }
 
 .movie__list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.movie__item {
-  display: flex;
-  justify-content: center;
-  width: 30%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-column-gap: 20px;
+  padding: 0 30px !important;
 }
 

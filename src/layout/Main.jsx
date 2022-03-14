@@ -9,12 +9,10 @@ export default class Main extends React.Component {
 		this.state = {
 			movies: []
 		}
-
-		this.init();
 	}
 
-	init = () => {
-		this.getMovies()
+	componentDidMount() {
+		this.init();
 	}
 
 	async getMovies() {
@@ -24,11 +22,15 @@ export default class Main extends React.Component {
 		this.setState({movies: data.Search})
 	}
 
+	init = () => {
+		this.getMovies()
+	}
+
 	render() {
-		let movies = this.state.movies;
+		let {movies} = this.state;
 		return (
 			<main className="main">
-				<Movies movies={movies}/>
+				{movies.length ? <Movies movies={movies}/> : <h3>Загрузка.....</h3>}
 			</main>
 		)
 	}
