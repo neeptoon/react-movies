@@ -40,3 +40,12 @@ main {
   padding: 0 30px !important;
 }
 
+.filters {
+  display: flex;
+  justify-content: center;
+}
+
+.filters p {
+  margin-right: 2em;
+}
+
