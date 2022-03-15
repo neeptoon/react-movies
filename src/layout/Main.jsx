@@ -1,5 +1,6 @@
 import React from "react";
 import Movies from '../components/Movies';
+import Preloader from "../components/Preloader";
 
 let url = 'http://www.omdbapi.com/?apikey=136a527&s=matrix';
 
@@ -30,7 +31,7 @@ export default class Main extends React.Component {
 		let {movies} = this.state;
 		return (
 			<main className="main">
-				{movies.length ? <Movies movies={movies}/> : <h3>Загрузка.....</h3>}
+				{movies.length ? <Movies movies={movies}/> : <Preloader/>}
 			</main>
 		)
 	}
