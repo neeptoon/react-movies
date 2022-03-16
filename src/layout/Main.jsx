@@ -1,8 +1,7 @@
 import React from "react";
 import Movies from '../components/Movies';
 import Preloader from "../components/Preloader";
-import Search from "../components/Search"
-import Filter from "../components/Filter"
+import Search from "../components/Search";
 
 
 export default class Main extends React.Component {
@@ -10,7 +9,6 @@ export default class Main extends React.Component {
 		super(props);
 		this.state = {
 			movies: [],
-			search: ''
 		}
 	}
 
@@ -20,8 +18,8 @@ export default class Main extends React.Component {
 			.then(data => this.setState({movies: data.Search}))
 	}
 
-	searchMovies = (str) => {
-		fetch(`http://www.omdbapi.com/?apikey=136a527&s=${str}`)
+	searchMovies = (str = 'matrix', type = 'all') => {
+		fetch(`http://www.omdbapi.com/?apikey=136a527&s=${str}${type !== 'all' ? `&type=${type}` : '' }`)
 			.then(response => response.json())
 			.then(data => this.setState({movies: data.Search}))
 	}
@@ -29,10 +27,10 @@ export default class Main extends React.Component {
 
 	render() {
 		let {movies} = this.state;
+		console.log(movies)
 		return (
 			<main className="main">
 				<Search searchMovies={this.searchMovies}/>
-				<Filter/>
 				{movies.length ? <Movies movies={movies}/> : <Preloader/>}
 			</main>
 		)
